@@ -146,10 +146,11 @@ class PubSubHubbub extends Stream {
 
         if (this.secret) {
             // do not use the original secret but a generated one
-            form['hub.secret'] = crypto
-                .createHmac('sha1', this.secret)
-                .update(topic)
-                .digest('hex');
+            form['hub.secret'] = this.secret
+//             form['hub.secret'] = crypto
+//                 .createHmac('sha1', this.secret)
+//                 .update(topic)
+//                 .digest('hex');
         }
 
         request.post(postParams, (error, response, responseBody) => {
